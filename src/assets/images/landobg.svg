@@ -1,0 +1,30 @@
+<svg width="520" height="640" viewBox="0 0 520 640" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+  <defs>
+    <!-- MAIN ORANGE GRADIENT -->
+    <linearGradient id="bgGradient" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ff7a00"></stop>
+      <stop offset="45%" stop-color="#d35400"></stop>
+      <stop offset="100%" stop-color="#8c2f00"></stop>
+    </linearGradient>
+
+    <!-- HALFTONE PATTERN -->
+    <pattern id="halftone" width="4" height="4" patternUnits="userSpaceOnUse">
+      <circle cx="1" cy="1" r="0.6" fill="rgba(0,0,0,0.45)"></circle>
+    </pattern>
+
+    <!-- RIGHT SIDE VIGNETTE -->
+    <radialGradient id="vignette" cx="70%" cy="50%" r="60%">
+      <stop offset="0%" stop-color="rgba(255,255,255,0.15)"></stop>
+      <stop offset="100%" stop-color="rgba(0,0,0,0)"></stop>
+    </radialGradient>
+  </defs>
+
+  <!-- BASE -->
+  <rect width="520" height="640" fill="url(#bgGradient)"></rect>
+
+  <!-- HALFTONE -->
+  <rect width="520" height="640" fill="url(#halftone)" opacity="0.55"></rect>
+
+  <!-- VIGNETTE -->
+  <rect width="520" height="640" fill="url(#vignette)"></rect>
+</svg>

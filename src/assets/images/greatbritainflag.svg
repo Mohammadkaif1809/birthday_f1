@@ -1,0 +1,6 @@
+<svg viewBox="0 0 640 480" xmlns="http://www.w3.org/2000/svg">
+  <rect width="640" height="480" fill="#012169"></rect>
+  <path d="M0 0L640 480M640 0L0 480" stroke="white" stroke-width="60"></path>
+  <path d="M320 0V480M0 240H640" stroke="white" stroke-width="100"></path>
+  <path d="M320 0V480M0 240H640" stroke="#C8102E" stroke-width="60"></path>
+</svg>

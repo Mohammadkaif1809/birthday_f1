@@ -1,0 +1,676 @@
+@import "tailwindcss";
+
+:root {
+  --f1-black: #0b0b10;
+  --f1-dark: #15151e;
+  --f1-red: #e10600;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Titillium+Web:wght@400;600;700&display=swap');
+
+body {
+  font-family: 'Titillium Web', system-ui, sans-serif;
+}
+
+/* Hide horizontal scrollbar */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* IE & Edge */
+  scrollbar-width: none;     /* Firefox */
+}
+
+@keyframes dropdown {
+  from {
+    opacity: 0;
+    transform: translateY(-6px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-dropdown {
+  animation: dropdown 0.18s ease-out forwards;
+}
+
+
+@keyframes dropdown {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-dropdown {
+  animation: dropdown 0.18s ease-out forwards;
+}
+
+
+.f1-driver-bg {
+  position: relative;
+  overflow: hidden;
+}
+
+.f1-driver-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(
+      circle at 70% 40%,
+      rgba(255,255,255,0.18),
+      transparent 60%
+    );
+  z-index: 1;
+}
+
+.f1-driver-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(
+    rgba(255,255,255,0.18) 1px,
+    transparent 1px
+  );
+  background-size: 6px 6px;
+  opacity: 0.35;
+  z-index: 2;
+}
+
+.f1-driver-content {
+  position: relative;
+  z-index: 3;
+}
+
+/* ===================== */
+/* GLOBAL DARK MODE FIX */
+/* ===================== */
+
+html.dark body {
+  background-color: #0f0f0f;
+  color: #e5e5e5;
+}
+
+/* Force white backgrounds to behave in dark mode */
+html.dark .bg-white {
+  background-color: #151515 !important;
+}
+
+/* Force light gray backgrounds */
+html.dark .bg-gray-100,
+html.dark .bg-gray-50,
+html.dark .bg-[#f6f6f6] {
+  background-color: #1a1a1a !important;
+}
+
+/* Fix black text */
+html.dark .text-black,
+html.dark .text-[#111],
+html.dark .text-[#000] {
+  color: #e5e5e5 !important;
+}
+
+/* Borders */
+html.dark .border,
+html.dark .border-black {
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Cards / sections */
+html.dark section,
+html.dark main,
+html.dark article {
+  background-color: inherit;
+}
+
+/* =============================== */
+/* DARK MODE UI FIXES (SAFE) */
+/* =============================== */
+
+/* ---- BUTTON FIX ---- */
+html.dark button {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+}
+
+/* keep hover clean */
+html.dark button:hover {
+  background-color: #f2f2f2 !important;
+}
+
+/* ---- LAVENDER / LIGHT CTA FIX ---- */
+html.dark .bg-[#cfd3ff],
+html.dark .bg-purple-100,
+html.dark .bg-indigo-100 {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+}
+
+/* ---- TEXT FIX FOR CARDS (FIRST IMAGE ISSUE) ---- */
+html.dark .text-white {
+  color: #000000 !important;
+}
+
+/* ensure headings readable */
+html.dark h1,
+html.dark h2,
+html.dark h3,
+html.dark h4,
+html.dark p {
+  color: inherit;
+}
+
+/* ---- CARD BACKGROUNDS ---- */
+html.dark .bg-white {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+}
+
+/* ---- ICONS / SVG FIX ---- */
+html.dark svg,
+html.dark img {
+  filter: none;
+}
+
+/* ===================================== */
+/* DARK MODE TEXT FIX (HEADINGS & TITLES) */
+/* ===================================== */
+
+/* ---- NAVBAR TEXT ---- */
+html.dark nav,
+html.dark nav a,
+html.dark nav span,
+html.dark nav li {
+  color: #ffffff !important;
+}
+
+/* ---- SECTION HEADINGS ---- */
+html.dark h1,
+html.dark h2,
+html.dark h3,
+html.dark h4,
+html.dark h5,
+html.dark h6 {
+  color: #ffffff !important;
+}
+
+/* ---- VIDEO / CARD TITLES ---- */
+html.dark .title,
+html.dark .heading,
+html.dark .card-title,
+html.dark .video-title {
+  color: #ffffff !important;
+}
+
+/* ---- COMMON TAILWIND TEXT COLORS OVERRIDE ---- */
+html.dark .text-black,
+html.dark .text-[#111],
+html.dark .text-gray-900,
+html.dark .text-gray-800 {
+  color: #ffffff !important;
+}
+
+html.dark .text-gray-600,
+html.dark .text-gray-500 {
+  color: #cccccc !important;
+}
+
+/* ---- SMALL LABELS / META TEXT ---- */
+html.dark .uppercase,
+html.dark .tracking-wide {
+  color: #dddddd !important;
+}
+
+
+/* ================================================= */
+/* FIX: VIDEO TILES, BUTTONS & HEADINGS IN DARK MODE */
+/* ================================================= */
+
+/* ---------- SECTION HEADINGS (FEATURED VIDEO, etc.) ---------- */
+html.dark h2,
+html.dark h3,
+html.dark .section-title {
+  color: #000000 !important;
+}
+
+/* ---------- TOP ACTION BUTTONS (Schedule / News / Video) ---------- */
+html.dark .bg-[#cfd3ff],
+html.dark .bg-indigo-100,
+html.dark .bg-purple-100 {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+}
+
+html.dark .bg-[#cfd3ff] span,
+html.dark .bg-indigo-100 span {
+  color: #000000 !important;
+}
+
+/* ---------- VIDEO TILE CARDS ---------- */
+html.dark .video-card,
+html.dark .featured-video-card {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+}
+
+/* ---------- VIDEO TITLES (TEXT UNDER THUMBNAILS) ---------- */
+html.dark .video-card h4,
+html.dark .video-card p,
+html.dark .featured-video-card h4,
+html.dark .featured-video-card p {
+  color: #000000 !important;
+}
+
+/* ---------- FORCE WHITE CARDS TO STAY WHITE ---------- */
+html.dark .bg-white {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+}
+
+/* ---------- REMOVE DARK OVERLAY ON VIDEO SECTIONS ---------- */
+html.dark .bg-black\/70,
+html.dark .bg-black\/80,
+html.dark .bg-black\/90 {
+  background-color: transparent !important;
+}
+
+/* ---------- ICON BUTTONS (play icons, arrows) ---------- */
+html.dark button svg,
+html.dark button img {
+  filter: none !important;
+}
+
+
+/* ========================================= */
+/* DARK MODE – VIDEO TITLES SHOULD BE WHITE */
+/* ========================================= */
+
+/* Keep section background dark */
+html.dark .featured-video,
+html.dark .featured-videos,
+html.dark .videos-section {
+  background-color: transparent;
+}
+
+/* VIDEO TITLES (UNDER THUMBNAILS) */
+html.dark .video-title,
+html.dark .video-card h4,
+html.dark .video-card p,
+html.dark .featured-video-card h4,
+html.dark .featured-video-card p {
+  color: #ffffff !important;
+}
+
+/* Make sure overlays don't wash text */
+html.dark .bg-black\/70,
+html.dark .bg-black\/80,
+html.dark .bg-black\/90 {
+  background-color: rgba(0, 0, 0, 0.6) !important;
+}
+
+/* PLAY ICON / DURATION TEXT */
+html.dark .video-card span,
+html.dark .video-card time {
+  color: #ffffff !important;
+}
+
+
+/* ============================== */
+/* FIA LOGO – HARD ISOLATION FIX */
+/* ============================== */
+
+.fia-logo {
+  filter: none !important;
+  opacity: 1 !important;
+  mix-blend-mode: normal !important;
+  isolation: isolate;
+}
+
+/* Kill ALL dark-mode overrides for FIA logo */
+html.dark .fia-logo {
+  filter: none !important;
+  opacity: 1 !important;
+  mix-blend-mode: normal !important;
+}
+
+
+@keyframes accessGranted {
+  0% { opacity: 0; letter-spacing: 0.6em; }
+  100% { opacity: 1; letter-spacing: 0.15em; }
+}
+
+.animate-accessGranted {
+  animation: accessGranted 1.2s ease-out forwards;
+}
+
+@keyframes scaleIn {
+  from { transform: scale(0.9); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.animate-scaleIn {
+  animation: scaleIn 0.6s ease-out forwards;
+}
+
+
+/* 🌬️ Very subtle breathing */
+@keyframes breatheSoft {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.008);
+  }
+}
+.animate-breathe-soft {
+  animation: breatheSoft 6s ease-in-out infinite;
+}
+
+/* ✨ Soft ambient glow (not neon) */
+.glow-card-soft {
+  position: relative;
+}
+.glow-card-soft::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background: linear-gradient(
+    120deg,
+    rgba(225,6,0,0.35),
+    rgba(255,182,193,0.35)
+  );
+  filter: blur(20px);
+  opacity: 0.35;
+  z-index: -1;
+}
+
+/* 🎬 Gentle text fade */
+@keyframes textFadeSoft {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animate-text-fade-soft {
+  animation: textFadeSoft 1s ease-out forwards;
+}
+
+/* 🎂 Elegant birthday gradient (slow & calm) */
+.birthday-text-soft {
+  background: linear-gradient(
+    90deg,
+    #ffd6e0,
+    #ff9aa2,
+    #ffd6e0
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: birthdaySoft 8s ease-in-out infinite;
+}
+
+@keyframes birthdaySoft {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+
+/* 🎉 TITLE — cinematic & calm */
+.wish-title {
+  background: linear-gradient(90deg, #ffffff, #ffccd5, #ffffff);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  opacity: 0;
+  animation:
+    wishFadeUp 1.2s ease-out forwards,
+    wishShimmer 6s ease-in-out infinite;
+}
+
+@keyframes wishFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes wishShimmer {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* 📬 Blinking mailbox */
+.mailbox {
+  font-size: 48px;
+  text-align: center;
+  margin: 20px 0;
+  opacity: 0;
+  animation: mailboxBlink 1.2s ease-in-out infinite;
+}
+
+@keyframes mailboxBlink {
+  0%, 100% { opacity: 0.25; }
+  50% { opacity: 1; }
+}
+
+/* ✉️ Letter container with paper texture */
+.letter-wrapper {
+  margin-top: 30px;
+  padding: 40px;
+  max-width: 760px;
+  margin-left: auto;
+  margin-right: auto;
+  max-height: 55vh;        /* 👈 limits height */
+  overflow-y: auto;        /* 👈 enables scroll */
+
+  background:
+    linear-gradient(180deg, #111318, #0b0c10),
+    repeating-linear-gradient(
+      0deg,
+      rgba(255,255,255,0.025),
+      rgba(255,255,255,0.025) 1px,
+      transparent 1px,
+      transparent 3px
+    );
+
+  border-radius: 16px;
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,0.06),
+    0 20px 60px rgba(0,0,0,0.6);
+
+  opacity: 0;
+  transform: translateY(-24px);
+  animation: letterDrop 1.4s ease-out forwards;
+  animation-delay: 0.6s;
+}
+
+@keyframes letterDrop {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 📝 Letter text */
+.letter-text {
+  color: rgba(255,255,255,0.85);
+  line-height: 1.9;
+  text-align: left;
+}
+
+/* ✍️ Ink-writing lines */
+.ink-line {
+  display: block;
+  opacity: 0;
+  transform: translateY(6px);
+  animation: inkReveal 0.9s ease forwards;
+}
+
+.ink-line:nth-child(1) { animation-delay: 1.4s; }
+.ink-line:nth-child(2) { animation-delay: 2.2s; }
+.ink-line:nth-child(3) { animation-delay: 3s; }
+.ink-line:nth-child(4) { animation-delay: 3.8s; }
+.ink-line:nth-child(5) { animation-delay: 4.6s; }
+.ink-line:nth-child(6) { animation-delay: 5.4s; }
+
+@keyframes inkReveal {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 💖 Soft highlights */
+.highlight {
+  color: #ffd6e0;
+  font-weight: 600;
+}
+
+.highlight-soft {
+  color: #ff9aa2;
+  font-weight: 600;
+  margin-top: 14px;
+  display: block;
+}
+
+/* 🔴 Button — premium breathing */
+.wish-button {
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 10px 35px rgba(225, 6, 0, 0.3);
+  animation: buttonBreathe 4s ease-in-out infinite;
+}
+
+@keyframes buttonBreathe {
+  0%, 100% {
+    box-shadow: 0 10px 35px rgba(225, 6, 0, 0.3);
+  }
+  50% {
+    box-shadow: 0 16px 50px rgba(225, 6, 0, 0.5);
+  }
+}
+
+
+/* 🎨 Subtle custom scrollbar */
+.letter-wrapper::-webkit-scrollbar {
+  width: 6px;
+}
+
+.letter-wrapper::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.letter-wrapper::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.2);
+  border-radius: 10px;
+}
+
+.letter-wrapper::-webkit-scrollbar-thumb:hover {
+  background: rgba(255,255,255,0.35);
+}
+
+
+@keyframes birthdayReveal {
+  0% {
+    opacity: 0;
+    transform: scale(0.8) translateY(20px);
+    filter: blur(6px);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.05);
+    filter: blur(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.animate-birthdayReveal {
+  animation: birthdayReveal 1.6s ease-out forwards;
+}
+
+@keyframes bgPulse {
+  0%, 100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.animate-bgPulse {
+  animation: bgPulse 4s ease-in-out infinite;
+}
+
+
+@keyframes birthdayReveal {
+  0% {
+    opacity: 0;
+    transform: scale(0.7) translateY(30px);
+    filter: blur(10px);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.05);
+    filter: blur(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+.animate-birthday-reveal {
+  animation: birthdayReveal 1.8s ease-out forwards;
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-120%); }
+  100% { transform: translateX(120%); }
+}
+.animate-shimmer {
+  animation: shimmer 2.8s ease-in-out infinite;
+}
+
+@keyframes heartbeatSoft {
+  0%, 100% { transform: scale(1); }
+  40% { transform: scale(1.06); }
+}
+.animate-heartbeat-soft {
+  animation: heartbeatSoft 2.6s ease-in-out infinite;
+}
+
+@keyframes birthdayBg {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
+}
+.animate-birthday-bg {
+  animation: birthdayBg 4s ease-in-out infinite;
+}
+
+@keyframes pulseSlow {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 0.8; }
+}
+.animate-pulse-slow {
+  animation: pulseSlow 5s ease-in-out infinite;
+}
